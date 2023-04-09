@@ -1,4 +1,8 @@
-# psql_sample
+# mysql_sample
+
+ChartGPT-4 を使って, mysql + flutter + python(flask) で TODO アプリを作ってみました。
+
+## ChatGPT への主な質問
 
 ```text
 fluttter 3.6 で mysql を使った TODO アプリを示してください。
@@ -74,9 +78,26 @@ ConnectionSettings(
 この todo アプリのための rest api を python で作ってください。
 ```
 
+## 起動方法
+
 ```text
 mysql.server start
 
 cd app
 flask run --host=0.0.0.0 --port=5001
 ```
+
+その後. vacode　から ios か andropd でアプリを起動させる。
+
+### スクリーンショット
+
+- 一覧
+![一覧](./screenshots/list.png)
+- 追加
+![追加](./screenshots/add.png)
+- 編集
+![編集](./screenshots/edit.png)
+- REST API Server
+![flask](./screenshots/list.png)
+- DB
+![DB](./screenshots/list.png)
