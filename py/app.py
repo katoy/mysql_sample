@@ -8,7 +8,7 @@ app = Flask(__name__)
 # MySQL の設定を行います
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'katokato'
+app.config['MYSQL_PASSWORD'] = 'password'
 app.config['MYSQL_DB'] = 'todo_app_db'
 
 mysql = MySQL(app)
