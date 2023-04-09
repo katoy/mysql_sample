@@ -64,10 +64,12 @@ class TaskFormScreenState extends State<TaskFormScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isEditing = _task.id != 0; // 編集画面かどうか判定する
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Task'),
-      ),
+          // 編集画面かどうかによってタイトルを変更する
+          title: Text(isEditing ? 'Edit List' : 'Add List')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
