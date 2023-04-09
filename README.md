@@ -77,5 +77,6 @@ ConnectionSettings(
 ```text
 mysql.server start
 
-python py/app.py
+cd app
+flask run --host=0.0.0.0 --port=5001
 ```

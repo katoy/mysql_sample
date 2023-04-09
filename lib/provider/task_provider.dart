@@ -4,10 +4,10 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 import '../models/task_model.dart';
-import '../provider/task_provider.dart';
 
 class TaskProvider with ChangeNotifier {
-  static const _baseApiUrl = 'http://127.0.0.1:5000';
+  // static const _baseApiUrl = 'http://127.0.0.1:5001';
+  static const _baseApiUrl = 'http://10.0.1.3:5001';
 
   List<Task> _items = [];
 
@@ -42,7 +42,7 @@ class TaskProvider with ChangeNotifier {
       _items.add(Task.fromJson(responseData));
       notifyListeners();
     } else {
-      //throw Exception('Failed to add task');
+      throw Exception('Failed to add task');
     }
   }
 
@@ -68,7 +68,7 @@ class TaskProvider with ChangeNotifier {
       );
 
       if (response.statusCode == 200) {
-        /// _items[index] = task;
+        _items[index] = task;
         notifyListeners();
       } else {
         throw Exception('Failed to update task');

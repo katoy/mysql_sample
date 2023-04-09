@@ -8,14 +8,16 @@ import '../screens/task_form_screen.dart';
 class HomeScreen extends StatefulWidget {
   static const routeName = '/';
 
+  const HomeScreen({super.key});
+
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  HomeScreenState createState() => HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
-      GlobalKey<RefreshIndicatorState>();
-  bool _isLoading = false;
+class HomeScreenState extends State<HomeScreen> {
+  // final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
+  //    GlobalKey<RefreshIndicatorState>();
+  final bool _isLoading = false;
 
   @override
   void initState() {
@@ -30,11 +32,11 @@ class _HomeScreenState extends State<HomeScreen> {
       await showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
-          title: Text('An error occurred!'),
-          content: Text('Something went wrong.'),
+          title: const Text('An error occurred!'),
+          content: const Text('Something went wrong.'),
           actions: <Widget>[
             TextButton(
-              child: Text('Okay'),
+              child: const Text('Okay'),
               onPressed: () => Navigator.of(ctx).pop(),
             )
           ],
@@ -46,16 +48,16 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> _deleteTask(BuildContext context, int id) async {
     try {
       await Provider.of<TaskProvider>(context, listen: false).deleteTask(id);
-      await _refreshTasks(context);
+      //await _refreshTasks(context);
     } catch (error) {
       await showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
-          title: Text('An error occurred!'),
-          content: Text('Something went wrong.'),
+          title: const Text('An error occurred!'),
+          content: const Text('Something went wrong.'),
           actions: <Widget>[
             TextButton(
-              child: Text('Okay'),
+              child: const Text('Okay'),
               onPressed: () => Navigator.of(ctx).pop(),
             )
           ],
@@ -68,10 +70,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Task List'),
+        title: const Text('Task List'),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
             onPressed: () {
               Navigator.of(context)
                   .pushNamed(TaskFormScreen.routeName, arguments: null);
@@ -80,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: _isLoading
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : RefreshIndicator(
@@ -89,14 +91,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 future: _refreshTasks(context),
                 builder: (ctx, snapshot) => snapshot.connectionState ==
                         ConnectionState.waiting
-                    ? Center(
+                    ? const Center(
                         child: CircularProgressIndicator(),
                       )
                     : Consumer<TaskProvider>(
                         builder: (ctx, taskProvider, _) {
                           final tasks = taskProvider.items;
                           return tasks.isEmpty
-                              ? Center(
+                              ? const Center(
                                   child: Text('No tasks yet.'),
                                 )
                               : ListView.builder(
@@ -126,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             IconButton(
-                                              icon: Icon(Icons.edit),
+                                              icon: const Icon(Icons.edit),
                                               onPressed: () {
                                                 // タスクフォーム画面に遷移する
                                                 Navigator.of(context).pushNamed(
@@ -135,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               },
                                             ),
                                             IconButton(
-                                              icon: Icon(Icons.delete),
+                                              icon: const Icon(Icons.delete),
                                               onPressed: () {
                                                 _deleteTask(context, task.id);
                                               },

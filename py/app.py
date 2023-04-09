@@ -3,7 +3,6 @@ from flask_mysqldb import MySQL
 import json
 import MySQLdb
 
-
 app = Flask(__name__)
 
 # MySQL の設定を行います
@@ -46,4 +45,4 @@ def delete_task(task_id):
     return jsonify({'result': 'Task deleted'})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0', port=5001)
