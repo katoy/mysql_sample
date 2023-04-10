@@ -100,4 +100,4 @@ flask run --host=0.0.0.0 --port=5001
 - REST API Server
 ![flask](./screenshots/list.png)
 - DB
-![DB](./screenshots/list.png)
+![DB](./screenshots/db.png)
